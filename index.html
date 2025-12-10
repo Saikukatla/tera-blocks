@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Tera Blocks — Upgraded</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Navigation / Pages -->
+    <header class="topbar">
+      <div class="brand">Tera Blocks</div>
+      <nav>
+        <button class="nav-btn" data-page="menu">Menu</button>
+        <button class="nav-btn" data-page="play">Play</button>
+        <button class="nav-btn" data-page="scores">High Scores</button>
+        <button class="nav-btn" data-page="about">About</button>
+      </nav>
+    </header>
+
+    <main>
+      <!-- MENU -->
+      <section id="page-menu" class="page active">
+        <div class="panel">
+          <h1>Tera Blocks</h1>
+          <p class="lead">Stack blocks, clear lines, and build a stable terrace. Reach the highest score!</p>
+          <div class="menu-actions">
+            <label>Player name
+              <input id="playerName" placeholder="Player" maxlength="20">
+            </label>
+            <div class="buttons">
+              <button id="startFromMenu">Start Game</button>
+              <button class="secondary" data-page="scores">View High Scores</button>
+            </div>
+          </div>
+          <div class="small">Tip: use arrow keys, ↑ rotate, space to hard drop, P to pause.</div>
+        </div>
+      </section>
+
+      <!-- PLAY -->
+      <section id="page-play" class="page">
+        <div class="game-wrap">
+          <aside class="leftpanel">
+            <div class="hud">
+              <div><strong>Score</strong><div id="hudScore">0</div></div>
+              <div><strong>Lines</strong><div id="hudLines">0</div></div>
+              <div><strong>Level</strong><div id="hudLevel">1</div></div>
+              <div><strong>Time</strong><div id="hudTime">00:00</div></div>
+            </div>
+
+            <div class="controls">
+              <button id="resumeBtn" class="secondary">Resume</button>
+              <button id="pauseBtn">Pause</button>
+              <button id="simulateBtn" class="secondary">Simulate Stability</button>
+              <button id="quitBtn" class="secondary">Quit to Menu</button>
+            </div>
+
+            <div class="goals card">
+              <h3>Level Goals</h3>
+              <ul id="goalsList">
+                <li>Clear lines to increase level</li>
+                <li>Keep structure stable</li>
+              </ul>
+            </div>
+          </aside>
+
+          <section class="stage">
+            <canvas id="gameCanvas" width="300" height="600" aria-label="Tera Blocks play field"></canvas>
+            <div class="touch-controls" aria-hidden="true">
+              <button id="leftTouch">◀</button>
+              <button id="downTouch">▼</button>
+              <button id="rightTouch">▶</button>
+              <button id="rotateTouch">⟳</button>
+            </div>
+          </section>
+
+          <aside class="rightpanel">
+            <div class="card preview">
+              <h4>Next</h4>
+              <canvas id="nextCanvas" width="120" height="120"></canvas>
+            </div>
+
+            <div class="card highscore">
+              <h4>Your Best</h4>
+              <div id="localBest">—</div>
+            </div>
+
+            <div class="card activity">
+              <h4>Activity Log</h4>
+              <div id="activityLog" class="log"></div>
+            </div>
+          </aside>
+        </div>
+
+        <!-- Game over overlay -->
+        <div id="gameOverOverlay" class="overlay hidden">
+          <div class="overlay-card">
+            <h2>Game Over</h2>
+            <p id="finalScore">Score: 0</p>
+            <p id="finalBest">Best: 0</p>
+            <div class="overlay-actions">
+              <button id="playAgainBtn">Play Again</button>
+              <button id="toMenuBtn" class="secondary">Back to Menu</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCORES -->
+      <section id="page-scores" class="page">
+        <div class="panel">
+          <h2>High Scores</h2>
+          <div class="scores-list card">
+            <ol id="highScoreList"></ol>
+          </div>
+          <div class="buttons">
+            <button class="secondary" data-page="menu">Back</button>
+            <button id="clearScores" class="danger">Clear Scores</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT -->
+      <section id="page-about" class="page">
+        <div class="panel">
+          <h2>About Terrace Blocks</h2>
+          <p>This upgraded prototype adds levels, scoring, persistent high-scores and a proper game-over flow.</p>
+          <ul>
+            <li>Controls: Arrow keys, rotate, hard drop</li>
+            <li>High scores are stored locally (localStorage)</li>
+          </ul>
+          <div class="buttons">
+            <button class="secondary" data-page="menu">Back</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="foot">Prototype • No external assets needed • Local high-scores</footer>
+  </div>
+
+<script src="app.js"></script>
+</body>
+</html>

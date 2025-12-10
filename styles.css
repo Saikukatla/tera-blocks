@@ -1,0 +1,60 @@
+:root{
+  --bg:#e9f2fb;
+  --card:#fff;
+  --accent:#2b8cff;
+  --muted:#6b7280;
+  --danger:#ff6b6b;
+  --glass: rgba(255,255,255,0.6);
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,system-ui,Arial;background:linear-gradient(180deg,#dbeffd,#f7fbff);color:#04243e}
+.topbar{display:flex;justify-content:space-between;align-items:center;padding:12px 20px;background:linear-gradient(90deg,#fff,#f2f7ff);box-shadow:0 2px 8px rgba(2,6,23,0.06)}
+.brand{font-weight:800}
+nav{display:flex;gap:8px}
+.nav-btn{background:transparent;border:0;padding:8px 10px;border-radius:8px;cursor:pointer;font-weight:700;color:#0b2540}
+.nav-btn:hover{background:var(--glass)}
+main{padding:18px}
+.page{display:none}
+.page.active{display:block}
+.panel{max-width:760px;margin:14px auto;background:var(--card);padding:20px;border-radius:12px;box-shadow:0 8px 30px rgba(11,20,32,0.06)}
+.lead{color:var(--muted)}
+.menu-actions{display:flex;flex-direction:column;gap:10px;margin-top:14px}
+.menu-actions input{padding:8px;border-radius:8px;border:1px solid #e6eefc}
+.buttons{display:flex;gap:10px;margin-top:8px}
+button{cursor:pointer;padding:10px 14px;border-radius:10px;border:0;background:var(--accent);color:white;font-weight:700}
+button.secondary{background:#eef5ff;color:#0b2540;border:1px solid rgba(11,20,32,0.04)}
+button.danger{background:var(--danger);color:white}
+.small{color:var(--muted);font-size:13px}
+
+/* Play layout */
+.game-wrap{display:grid;grid-template-columns:220px 1fr 240px;gap:14px}
+.leftpanel, .rightpanel{display:flex;flex-direction:column;gap:12px}
+.hud{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;background:var(--card);padding:12px;border-radius:10px;box-shadow:0 6px 12px rgba(11,20,32,0.04)}
+.hud div{background:#f7fbff;padding:8px;border-radius:8px;text-align:center}
+.stage{background:transparent;display:flex;flex-direction:column;align-items:center;gap:8px}
+canvas{border-radius:10px;background:linear-gradient(180deg,#07141f,#0c2a3a);box-shadow:0 10px 30px rgba(2,6,23,0.12)}
+.touch-controls{display:flex;gap:8px;justify-content:center;margin-top:6px}
+.touch-controls button{padding:8px 14px;border-radius:8px;background:#f1f6ff;border:0;color:#0b2540;font-weight:700}
+
+.card{background:var(--card);padding:12px;border-radius:10px;box-shadow:0 6px 18px rgba(2,6,23,0.04)}
+.preview canvas{background:linear-gradient(180deg,#f7fbff,#eef6ff);border-radius:8px}
+.activity .log{height:160px;overflow:auto}
+.goals ul{padding-left:16px;margin:0}
+
+/* overlay */
+.overlay{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(2,6,23,0.45);z-index:50}
+.overlay.hidden{display:none}
+.overlay-card{background:var(--card);padding:18px;border-radius:12px;text-align:center;min-width:280px}
+.overlay-actions{display:flex;gap:8px;justify-content:center;margin-top:12px}
+
+/* scores */
+.scores-list{max-width:720px;margin:12px auto;padding:12px}
+.scores-list ol{margin:0;padding-left:20px}
+
+/* responsive */
+@media (max-width:980px){
+  .game-wrap{grid-template-columns:1fr;align-items:center}
+  .leftpanel{order:2}
+  .rightpanel{order:3}
+  .stage{order:1}
+}
